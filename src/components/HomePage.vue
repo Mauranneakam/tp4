@@ -1,7 +1,8 @@
 <template>
-    <div>
-      <h2>Welcome to the Home  Page!</h2>
-    </div>
+    <main>
+      <h1>Welcome to Vue OAuth Microsoft Graph!</h1>
+      <p>Your application content goes here.</p>
+    </main>
   </template>
   
   <script>

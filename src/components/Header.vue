@@ -3,7 +3,7 @@
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><span>Mauranne</span></li>
+          <li><span>Mau</span></li>
         </ul>
       </nav>
     </header>
