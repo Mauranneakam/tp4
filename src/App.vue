@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <HomePage />
+    <Header />
+    <main>
+      <h1>Welcome to Vue OAuth Microsoft Graph!</h1>
+      <p>Your application content goes here.</p>
+    </main>
+    <Footer />
   </div>
 </template>
 
 <script>
-import HomePage from './components/HomePage.vue';
-
-//import Header from './components/Header.vue';
-//import Footer from './components/Footer.vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
-   HomePage
+    Header,
+    Footer
   }
 }
 </script>
