@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <Header />
+    <BaseLayout>
     <HomePage />
-    <Footer />
+    </BaseLayout>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+//import Header from './components/Header.vue';
+//import Footer from './components/Footer.vue';
 import HomePage from './components/HomePage.vue';
+import BaseLayout from './components/BaseLayout.vue';
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer,
+    BaseLayout,
     HomePage
   }
 }
@@ -25,7 +25,7 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
+  color: #000203;
   margin-top: 60px;
 }
 main {
