@@ -1,15 +1,31 @@
 <template>
   <div id="app">
-    <h1>Welcome to Vue</h1>
+    <HomePage />
   </div>
 </template>
 
 <script>
+import HomePage from './components/HomePage.vue';
+
+//import Header from './components/Header.vue';
+//import Footer from './components/Footer.vue';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+   HomePage
+  }
 }
 </script>
 
-<style>
-/* Add your styles here */
+<style scoped>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #000000;
+  margin-top: 60px;
+}
+main {
+  padding: 20px;
+}
 </style>
