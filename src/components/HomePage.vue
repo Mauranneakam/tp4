@@ -6,8 +6,8 @@
     <BaseButton color="danger" :isDisabled="false">Danger Button</BaseButton>
     <BaseButton color="danger" :isDisabled="true">Disabled Danger Button</BaseButton>
     
-    <!-- New Button for Disabling -->
-    <BaseButton :isDisabled="isButtonDisabled" @click="handleClick">Click Me (2s Disabled)</BaseButton>
+    <!-- Button with increasing wait time -->
+    <BaseButton :isDisabled="isButtonDisabled" @click="handleClick">Click Me (Wait: {{ waitTime }}s)</BaseButton>
   </div>
 </template>
 
@@ -21,20 +21,30 @@ export default {
   },
   data() {
     return {
-      isButtonDisabled: false
+      isButtonDisabled: false,
+      clickCount: 0 // Counter for the number of clicks
     };
+  },
+  computed: {
+    waitTime() {
+      // Calculate wait time based on the number of clicks
+      return this.clickCount + 1; // Start from 1 second
+    }
   },
   methods: {
     handleClick() {
       // Disable the button
       this.isButtonDisabled = true;
 
-      // Create a promise that resolves after 2 seconds
+      // Increment click count
+      this.clickCount++;
+
+      // Create a promise that resolves after the wait time
       return new Promise((resolve) => {
         setTimeout(() => {
           this.isButtonDisabled = false; // Re-enable the button
           resolve(); // Resolve the promise
-        }, 2000);
+        }, this.waitTime * 1000); // Convert to milliseconds
       });
     }
   }
