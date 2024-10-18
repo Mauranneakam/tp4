@@ -1,16 +1,22 @@
 <template>
-    <main>
-      <h1>Welcome to Vue OAuth Microsoft Graph!</h1>
-      <p>Your application content goes here.</p>
-    </main>
+    <div>
+      <h2>Welcome to the Home Page!</h2>
+      <BaseButton :isDisabled="false">Click Me!</BaseButton>
+      <BaseButton :isDisabled="true">Disabled Button</BaseButton>
+    </div>
   </template>
   
   <script>
+  import BaseButton from './BaseButton.vue';
+  
   export default {
-    name: 'HomePage'
+    name: 'HomePage',
+    components: {
+      BaseButton
+    }
   }
   </script>
   
   <style scoped>
-  /* Add styles here if needed */
+  /* Add additional styles for HomePage if needed */
   </style>
