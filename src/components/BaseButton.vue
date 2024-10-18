@@ -1,6 +1,6 @@
 <template>
     <button 
-      :class="['base-button', { 'disabled': isDisabled }]"
+      :class="['base-button', colorClass, { 'disabled': isDisabled }]"
       :disabled="isDisabled"
       @mouseover="hover = true"
       @mouseleave="hover = false"
@@ -18,6 +18,18 @@
       isDisabled: {
         type: Boolean,
         default: false
+      },
+      color: {
+        type: String,
+        default: 'primary',
+        validator: value => {
+          return ['primary', 'warn', 'danger'].includes(value);
+        }
+      }
+    },
+    computed: {
+      colorClass() {
+        return `button-${this.color}`;
       }
     },
     data() {
@@ -31,7 +43,6 @@
   
   <style scoped>
   .base-button {
-    background-color: #42b983;
     color: white;
     border: none;
     border-radius: 4px;
@@ -40,8 +51,28 @@
     transition: background-color 0.3s, transform 0.2s;
   }
   
-  .base-button:hover {
+  .button-primary {
+    background-color: #42b983;
+  }
+  
+  .button-primary:hover {
     background-color: #36a76e;
+  }
+  
+  .button-warn {
+    background-color: #f0ad4e;
+  }
+  
+  .button-warn:hover {
+    background-color: #ec971f;
+  }
+  
+  .button-danger {
+    background-color: #d9534f;
+  }
+  
+  .button-danger:hover {
+    background-color: #c9302c;
   }
   
   .base-button:focus {
