@@ -2,7 +2,7 @@
   <div id="app">
     <BaseLayout>
       <template #main>
-        <HomePage :user="user" @user-signed-in="setUser" />
+        <HomePage/>
       </template>
     </BaseLayout>
   </div>
@@ -24,11 +24,7 @@ export default {
     return {
       user: null // Store the user information here
     };
-  },
-  methods: {
-    setUser(user) {
-      this.user = user; // Update the user with the received information
-    }
+ 
 }
 }
 </script>
