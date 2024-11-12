@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <BaseLayout>
-    <HomePage />
+      <template #main>
+        <HomePage :user="user" @user-signed-in="setUser" />
+      </template>
     </BaseLayout>
   </div>
 </template>
@@ -17,7 +19,17 @@ export default {
   components: {
     BaseLayout,
     HomePage
-  }
+  },
+  data() {
+    return {
+      user: null // Store the user information here
+    };
+  },
+  methods: {
+    setUser(user) {
+      this.user = user; // Update the user with the received information
+    }
+}
 }
 </script>
 

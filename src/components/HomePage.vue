@@ -1,51 +1,52 @@
 <template>
   <div>
     <h2>Welcome to the Home Page!</h2>
+    <div v-if="user">
+    <h1>Bienvenue, {{ user.name }} !</h1>
+  </div>
     <BaseButton color="primary" :isDisabled="false">Primary Button</BaseButton>
     <BaseButton color="warn" :isDisabled="false">Warn Button</BaseButton>
     <BaseButton color="danger" :isDisabled="false">Danger Button</BaseButton>
-    <BaseButton color="danger" :isDisabled="true">Disabled Danger Button</BaseButton>
+    <!-- <BaseButton color="danger" :isDisabled="true">Disabled Danger Button</BaseButton>
     
-    <!-- Button with increasing wait time -->
-    <BaseButton :isDisabled="isButtonDisabled" @click="handleClick">Click Me (Wait: {{ waitTime }}s)</BaseButton>
+    Button with increasing wait time 
+    <BaseButton :isDisabled="isButtonDisabled" @click="handleClick">Click Me (Wait: {{ waitTime }}s)</BaseButton>-->
+  
+    <AsyncButton :color="'primary'" :delay="clicks" @click="increaseClicks">
+      Cliquer pour ralentir ({{ clicks }} secondes d'attente) !
+    </AsyncButton>
   </div>
 </template>
 
 <script>
 import BaseButton from './BaseButton.vue';
+import AsyncButton from './AsyncButton.vue';
+import { signInAndGetUser } from '../lib/microsoftGraph';
 
 export default {
   name: 'HomePage',
+  props: {
+    user: {
+      type: Object,
+      default: null
+    }
+  },
   components: {
-    BaseButton
+    BaseButton,  AsyncButton
   },
   data() {
     return {
-      isButtonDisabled: false,
-      clickCount: 0 // Counter for the number of clicks
+      clicks: 1 // Initialise le compteur à 1
     };
   },
-  computed: {
-    waitTime() {
-      // Calculate wait time based on the number of clicks
-      return this.clickCount + 1; // Start from 1 second
-    }
-  },
+  
   methods: {
-    handleClick() {
-      // Disable the button
-      this.isButtonDisabled = true;
-
-      // Increment click count
-      this.clickCount++;
-
-      // Create a promise that resolves after the wait time
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          this.isButtonDisabled = false; // Re-enable the button
-          resolve(); // Resolve the promise
-        }, this.waitTime * 1000); // Convert to milliseconds
-      });
+    increaseClicks() {
+      this.clicks += 1; // Incrémente le compteur à chaque clic
+    },
+    async signInWithMicrosoft() {
+      const user = await signInAndGetUser();
+      this.$emit('user-signed-in', user);
     }
   }
 }
