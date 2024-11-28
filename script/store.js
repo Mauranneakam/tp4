@@ -11,14 +11,13 @@ export default createStore({
             state.user = user;
         },
         logout(state) {
-            state.user = null; 
+            state.user = null;
         }
     },
     getters: {
 
         getUser(state) {
             return state.user;
-        
         },
         isLoggedIn: state => !!state.user
     }

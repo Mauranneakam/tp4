@@ -12,9 +12,7 @@
     Button with increasing wait time 
     <BaseButton :isDisabled="isButtonDisabled" @click="handleClick">Click Me (Wait: {{ waitTime }}s)</BaseButton>-->
   
-    <AsyncButton :color="'primary'" :delay="clicks" @click="increaseClicks">
-      Cliquer pour ralentir ({{ clicks }} secondes d'attente) !
-    </AsyncButton>
+    <AsyncButton color="primary" :disabled="isLoggedIn" @click="signInWithMicrosoft">Sign In with Microsoft</AsyncButton>
   </div>
 </template>
 
@@ -30,6 +28,9 @@ export default {
     ...mapGetters(['getUser']),
     user() {
       return this.getUser
+    },
+    isLoggedIn() {
+      return !!this.user;
     }
   },
   components: {
