@@ -2,8 +2,7 @@
     <header>
       <nav>
         <router-link to="/">Accueil</router-link> |
-    <router-link to="/conversations">Conversations</router-link>
-      </nav>
+        <router-link to="/conversations">Conversations </router-link>      </nav>
     </header>
   </template>
   
