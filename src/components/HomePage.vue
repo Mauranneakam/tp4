@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      clicks: 1 // Initialise le compteur à 1
+      clicks: 1 
     };
   },
   
@@ -47,7 +47,7 @@ export default {
       this.clicks += 1; // Incrémente le compteur à chaque clic
     },
     async signInWithMicrosoft() {
-      const user = await (signInAndGetUser);
+      const user = await signInAndGetUser();
       this.setUser(user);
     }
   }

@@ -1,10 +1,8 @@
 <template>
     <header>
       <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><span>Mau</span></li>
-        </ul>
+        <router-link to="/">Accueil</router-link> |
+    <router-link to="/conversations">Conversations</router-link>
       </nav>
     </header>
   </template>

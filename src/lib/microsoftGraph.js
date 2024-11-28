@@ -24,7 +24,6 @@ export async function initializeMsal() {
 }
 export async function signInAndGetUser() {
     try {
-        // Appelle la fonction d'initialisation avant de faire quoi que ce soit
         await initializeMsal();
         const authResult = await msalInstance.loginPopup(requestedScopes);
         msalInstance.setActiveAccount(authResult.account);

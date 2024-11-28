@@ -2,7 +2,7 @@
   <div id="app">
     <BaseLayout>
       <template #main>
-        <HomePage/>
+        <router-view />
       </template>
     </BaseLayout>
   </div>
@@ -11,18 +11,17 @@
 <script>
 //import Header from './components/Header.vue';
 //import Footer from './components/Footer.vue';
-import HomePage from './components/HomePage.vue';
+//import HomePage from './components/HomePage.vue';
 import BaseLayout from './components/BaseLayout.vue';
 
 export default {
   name: 'App',
   components: {
-    BaseLayout,
-    HomePage
+    BaseLayout
   },
   data() {
     return {
-      user: null // Store the user information here
+      user: null 
     };
  
 }
